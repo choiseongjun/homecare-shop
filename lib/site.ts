@@ -4,7 +4,7 @@ export const SITE = {
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://airpick.kr",
-  description: "서울 에어컨 서비스 수요를 확인하는 무료 사전상담 베타입니다. 상담 신청은 예약 확정이 아닙니다.",
+  description: "에어컨 설치·이전설치·수리·청소 비용을 확인하고 간편하게 상담을 신청하세요.",
 };
 
 export const services = [
