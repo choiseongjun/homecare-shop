@@ -21,7 +21,7 @@ function Header() {
 }
 
 function Footer() {
-  return <footer className="footer"><div className="footer-inner"><div><div className="brand footer-brand"><span className="brand-mark">A</span><span>에어픽</span></div><p>가격은 투명하게, 연결은 정확하게.<br/>에어컨 서비스 전문가 연결 플랫폼</p></div><div className="footer-links"><div><b>서비스</b><Link href="/install">신규 설치</Link><Link href="/relocation">이전설치</Link><Link href="/repair">수리</Link><Link href="/cleaning">청소</Link></div><div><b>안내</b><Link href="/price">가격표</Link><Link href="/cases">시공사례</Link><Link href="/blog">가이드</Link></div><div><b>고객센터</b><a href={SITE.phoneHref}>{SITE.phone}</a><span>평일 09:00–18:00</span></div></div></div><div className="footer-bottom">© 2026 AIRPICK. 에어픽은 검증된 협력 전문가를 연결하는 서비스입니다.</div></footer>;
+  return <footer className="footer"><div className="footer-inner"><div><div className="brand footer-brand"><span className="brand-mark">A</span><span>에어픽</span></div><p>가격은 투명하게, 연결은 정확하게.<br/>에어컨 서비스 전문가 연결 플랫폼</p></div><div className="footer-links"><div><b>서비스</b><Link href="/install">신규 설치</Link><Link href="/relocation">이전설치</Link><Link href="/repair">수리</Link><Link href="/cleaning">청소</Link><Link href="/system-aircon">가정용 시스템</Link><Link href="/commercial-aircon">상업용 냉난방</Link></div><div><b>안내</b><Link href="/price">가격표</Link><Link href="/cases">시공사례</Link><Link href="/blog">가이드</Link></div><div><b>고객센터</b><a href={SITE.phoneHref}>{SITE.phone}</a><span>평일 09:00–18:00</span></div></div></div><div className="footer-bottom">© 2026 AIRPICK. 에어픽은 검증된 협력 전문가를 연결하는 서비스입니다.</div></footer>;
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

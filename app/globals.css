@@ -18,3 +18,13 @@
 .case-detail-photo.case-photo{height:430px;border-radius:15px;background-size:cover;background-position:center}
 @media(max-width:1000px){.case-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){.case-grid{grid-template-columns:1fr}.case-detail-photo.case-photo{height:260px}}
+
+/* Distinct HVAC type photography */
+.type-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+.type-photo{height:190px;background-size:cover}
+.type-photo.photo-ceiling{background-image:url('/services/ceiling-cassette-v2.png');background-position:center 28%}
+.type-photo.photo-system{background-image:url('/services/residential-system-v2.png');background-position:center 30%}
+.type-photo.photo-commercial{background-image:url('/services/commercial-hvac-v2.png');background-position:center}
+@media(max-width:1000px){.type-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.type-card:nth-child(5){grid-column:auto}.type-photo{height:150px}}
+@media(max-width:560px){.type-grid{grid-template-columns:1fr}.type-photo{height:210px}}

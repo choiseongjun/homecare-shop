@@ -13,14 +13,16 @@ export const services = [
   { slug: "cleaning", icon: "03", name: "에어컨 청소", title: "에어컨 분해 청소", price: "7만원~", copy: "냄새와 오염 상태에 맞춰 청소 범위를 안내합니다." },
   { slug: "repair", icon: "04", name: "에어컨 수리", title: "에어컨 점검·수리", price: "5만원~", copy: "냉방 불량, 누수, 소음, 작동 오류를 점검합니다." },
   { slug: "system-aircon", icon: "05", name: "시스템에어컨", title: "시스템에어컨 설치", price: "현장 견적", copy: "주거·상업 공간의 대수와 구조를 먼저 확인합니다." },
+  { slug: "commercial-aircon", icon: "06", name: "상업용 냉난방", title: "상업용 에어컨·냉난방기", price: "현장 견적", copy: "카페·상가·사무실 규모에 맞춰 용량과 배관 동선을 설계합니다." },
 ];
 
 export const airconTypes = [
   { slug: "wall", name: "벽걸이 에어컨", price: "12만원~", copy: "원룸·침실에 가장 많이 설치하는 기본형", photo: "wall" },
   { slug: "stand", name: "스탠드 에어컨", price: "18만원~", copy: "거실용 대용량 제품 설치와 이전", photo: "stand" },
   { slug: "two-in-one", name: "2in1 에어컨", price: "28만원~", copy: "벽걸이와 스탠드를 한 번에 설치", photo: "two" },
-  { slug: "ceiling", name: "천장형 에어컨", price: "현장 견적", copy: "천장 매립형·카세트형 설치 및 이전", photo: "system" },
-  { slug: "system", name: "시스템에어컨", price: "현장 견적", copy: "아파트·사무실 다대 설치 전문 상담", photo: "system" },
+  { slug: "ceiling", name: "천장형 에어컨", price: "현장 견적", copy: "매장·사무실 1way·4way 카세트형", photo: "ceiling" },
+  { slug: "system", name: "가정용 시스템에어컨", price: "현장 견적", copy: "아파트 여러 방의 매립형 실내기 설치", photo: "system" },
+  { slug: "commercial", name: "상업용 냉난방", price: "현장 견적", copy: "카페·상가·대형 사무실 맞춤 용량 설계", photo: "commercial" },
 ];
 
 export const prices = [
@@ -29,6 +31,7 @@ export const prices = [
   { category: "2in1", name: "기본 설치", price: 280000, unit: "세트", note: "벽걸이 + 스탠드" },
   { category: "천장형", name: "1대 기본 설치", price: 350000, unit: "대", note: "천장 상태 확인 필요" },
   { category: "시스템", name: "시스템에어컨 설치", price: 450000, unit: "대", note: "배관·전기·천장 공사 별도" },
+  { category: "상업용", name: "냉난방기 설치", price: 550000, unit: "대", note: "공간 면적·전기 증설·덕트 공사 별도" },
   { category: "추가 비용", name: "벽걸이 배관 추가", price: 18000, unit: "m", note: "현장 실측 기준" },
   { category: "추가 비용", name: "스탠드 배관 추가", price: 22000, unit: "m", note: "현장 실측 기준" },
   { category: "추가 비용", name: "앵글 설치", price: 70000, unit: "개", note: "설치 위치에 따라 상이" },
