@@ -5,6 +5,8 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["airpick"]
 }
 
 enum LeadStatus {
@@ -14,6 +16,8 @@ enum LeadStatus {
   ASSIGNED
   COMPLETED
   CANCELED
+
+  @@schema("airpick")
 }
 
 model Lead {
@@ -33,6 +37,7 @@ model Lead {
   updatedAt         DateTime    @updatedAt
 
   @@index([status, createdAt])
+  @@schema("airpick")
 }
 
 model LeadImage {
@@ -40,6 +45,8 @@ model LeadImage {
   leadId String
   url    String
   lead   Lead   @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@schema("airpick")
 }
 
 model Price {
@@ -51,6 +58,8 @@ model Price {
   description String?
   isActive    Boolean @default(true)
   sortOrder   Int     @default(0)
+
+  @@schema("airpick")
 }
 
 model Case {
@@ -70,6 +79,8 @@ model Case {
   seoDescription String?
   items          CaseItem[]
   createdAt      DateTime   @default(now())
+
+  @@schema("airpick")
 }
 
 model CaseItem {
@@ -78,6 +89,8 @@ model CaseItem {
   name   String
   price  Int
   case   Case   @relation(fields: [caseId], references: [id], onDelete: Cascade)
+
+  @@schema("airpick")
 }
 
 model Post {
@@ -92,6 +105,8 @@ model Post {
   seoDescription String?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+
+  @@schema("airpick")
 }
 
 model Region {
@@ -102,6 +117,8 @@ model Region {
   content   String
   faq       Json?
   published Boolean @default(false)
+
+  @@schema("airpick")
 }
 
 model Partner {
@@ -113,6 +130,8 @@ model Partner {
   regions     PartnerRegion[]
   services    PartnerService[]
   createdAt   DateTime         @default(now())
+
+  @@schema("airpick")
 }
 
 model PartnerRegion {
@@ -120,6 +139,8 @@ model PartnerRegion {
   partnerId String
   region    String
   partner   Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  @@schema("airpick")
 }
 
 model PartnerService {
@@ -127,4 +148,6 @@ model PartnerService {
   partnerId   String
   serviceType String
   partner     Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+
+  @@schema("airpick")
 }
