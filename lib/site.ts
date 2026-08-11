@@ -4,7 +4,7 @@ export const SITE = {
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://airpick.kr",
-  description: "에어컨 설치비를 미리 확인하고 사진으로 간편하게 견적을 요청하세요.",
+  description: "서울 에어컨 서비스 수요를 확인하는 무료 사전상담 베타입니다. 상담 신청은 예약 확정이 아닙니다.",
 };
 
 export const services = [
@@ -50,7 +50,7 @@ export const cases = [
 
 export const posts = [
   { slug: "relocation-cost-guide", category: "이전설치", title: "에어컨 이전설치 비용은 얼마나 나올까?", excerpt: "기본 설치비부터 배관, 타공, 앵글까지 견적을 좌우하는 항목을 정리했습니다.", date: "2026. 08. 04", read: "5분" },
-  { slug: "wall-aircon-price", category: "설치비용", title: "벽걸이 에어컨 설치비 총정리", excerpt: "기본 배관 길이와 현장 조건에 따라 달라지는 실제 설치비 기준을 확인하세요.", date: "2026. 07. 28", read: "4분" },
+  { slug: "wall-aircon-price", category: "설치비용", title: "벽걸이 에어컨 설치비 총정리", excerpt: "기본 배관 길이와 현장 조건에 따라 달라지는 일반적인 설치비 기준을 확인하세요.", date: "2026. 07. 28", read: "4분" },
   { slug: "pipe-extra-cost", category: "에어컨 문제", title: "에어컨 배관 추가 비용은 왜 발생할까?", excerpt: "배관 종류와 길이, 보온재까지 추가 비용이 생기는 이유를 쉽게 설명합니다.", date: "2026. 07. 21", read: "6분" },
   { slug: "system-aircon-four", category: "시스템에어컨", title: "시스템에어컨 4대 설치 비용 안내", excerpt: "아파트 평형과 천장 구조에 따른 공사 범위와 확인사항을 살펴봅니다.", date: "2026. 07. 15", read: "7분" },
 ];

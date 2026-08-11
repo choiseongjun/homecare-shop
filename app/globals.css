@@ -41,3 +41,8 @@
 .policy-list{display:grid;gap:0;border-top:1px solid #e4e7ea}.policy-list section{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:30px 0;border-bottom:1px solid #e4e7ea}.policy-list section>span{color:#ff6846;font-size:12px;font-weight:900}.policy-list h2{font-size:21px;margin:0 0 8px}.policy-list p{color:#68717e;line-height:1.8;margin:0}
 .policy-check{margin:46px 0;padding:30px;background:#f5f7f8;border-radius:14px}.policy-check h2{margin-top:0}.policy-check ul{display:grid;grid-template-columns:1fr 1fr;gap:12px 30px;margin:0;padding-left:20px;color:#5d6673}
 @media(max-width:800px){.connection-notice{padding:64px 20px}.connection-notice-inner{grid-template-columns:1fr;gap:38px}.connection-notice h2{font-size:28px}.policy-check ul{grid-template-columns:1fr}}
+
+/* Free demand-test beta status */
+.beta-bar{background:#ff6846;color:#fff;text-align:center;padding:8px 16px;font-size:11px;font-weight:800;letter-spacing:.01em}
+.beta-sticky a:first-child{background:#fff;color:#12213d;border-top:1px solid #e2e5e8}
+@media(max-width:600px){.beta-bar{font-size:10px;line-height:1.45;padding:7px 12px}.policy-list section{grid-template-columns:38px 1fr;gap:10px}.policy-highlight{padding:20px}}
