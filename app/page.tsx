@@ -19,6 +19,8 @@ export default function Home() {
 
     <section className="section guide"><div className="section-head"><div><span className="kicker">AIRCON GUIDE</span><h2>알아두면 비용이<br/>보이는 에어컨 가이드</h2></div><Link href="/blog" className="text-link dark">가이드 전체보기 →</Link></div><div className="post-grid">{posts.slice(0,3).map((p,i)=><Link href={`/blog/${p.slug}`} className="post-card" key={p.slug}><div className={`post-art post-${i}`}><span>{i===0?"₩":i===1?"⌂":"↗"}</span></div><small>{p.category} · {p.read}</small><h3>{p.title}</h3><p>{p.excerpt}</p><b>읽어보기 →</b></Link>)}</div></section>
 
+    <section className="connection-notice"><div className="connection-notice-inner"><div><span className="kicker light">HOW AIRPICK WORKS</span><h2>에어픽은 직접 시공업체가 아닌<br/>협력 전문가 연결 서비스입니다</h2><p>접수된 사진과 현장 정보를 확인해 적합한 지역 협력 전문가를 연결합니다. 실제 시공 계약과 결제, 작업 및 A/S 조건은 배정된 전문가와 고객이 확인하고 결정합니다.</p><Link href="/service-policy" className="text-link">서비스 운영 안내 자세히 보기 →</Link></div><div className="connection-points"><div><b>01</b><span><strong>표시 가격은 예상 기준</strong>현장·제품 확인 후 최종 견적 확정</span></div><div><b>02</b><span><strong>시공 전 작업 범위 확인</strong>추가 비용과 A/S 조건을 서면 확인</span></div><div><b>03</b><span><strong>협력 전문가가 실제 시공</strong>계약·결제·시공 책임 주체를 확인</span></div></div></div></section>
+
     <section className="final-cta"><div><span>설치·이전·수리 비용이 궁금하신가요?</span><h2>사진만 보내주세요.<br/>예상 견적을 알려드릴게요.</h2><p>견적 신청은 무료이며, 부담 없이 비교해보셔도 괜찮아요.</p><div><Link href="/estimate" className="btn white">사진으로 견적 받기 →</Link><a href={SITE.phoneHref} className="btn ghost">전화로 상담하기</a></div></div><div className="cta-orbit"><div className="big-ac">A</div><span className="bubble one">견적 무료</span><span className="bubble two">평균 2시간</span></div></section>
   </>;
 }
