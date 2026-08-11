@@ -11,3 +11,10 @@
 
 @media(max-width:1000px){.type-grid{grid-template-columns:repeat(3,1fr)}.case-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){.hero-visual{height:390px}.hero-photo-real{height:370px}.type-grid{grid-template-columns:1fr 1fr}.type-photo{height:120px}.type-card:nth-child(5){grid-column:1/-1}.service-links{justify-content:flex-start}.case-grid,.listing-grid{grid-template-columns:1fr}.case-detail-photo{height:260px}}
+
+/* Independent case-study photography */
+.case-grid{grid-template-columns:repeat(3,1fr)}
+.case-art.case-photo{background-size:cover;background-position:center;background-repeat:no-repeat}
+.case-detail-photo.case-photo{height:430px;border-radius:15px;background-size:cover;background-position:center}
+@media(max-width:1000px){.case-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.case-grid{grid-template-columns:1fr}.case-detail-photo.case-photo{height:260px}}
