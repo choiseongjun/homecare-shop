@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/HardLink";
 import { airconTypes, cases, money, posts, prices, SITE } from "../lib/site";
 
 export default function Home() {

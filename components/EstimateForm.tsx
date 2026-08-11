@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import Link from "@/components/HardLink";
 
 const serviceOptions=["신규 설치","이전 설치","철거","청소","수리","시스템에어컨","상업용 냉난방","기타"];
 const airconOptions=["벽걸이","스탠드","2in1","천장형","가정용 시스템","상업용 냉난방","모름"];

@@ -1,3 +1,3 @@
-import type {Metadata} from "next";import Link from "next/link";import {posts} from "../../lib/site";
+import type {Metadata} from "next";import Link from "@/components/HardLink";import {posts} from "../../lib/site";
 export const metadata:Metadata={title:"에어컨 설치비·이전설치 가이드",description:"에어컨 설치비, 배관 추가 비용, 이전설치와 청소에 관한 실용적인 정보를 확인하세요."};
 export default function Blog(){return <><section className="sub-hero"><span className="kicker">AIRCON GUIDE</span><h1>에어컨 비용 가이드</h1><p>설치 전에 알아두면 비용과 작업 과정이 더 선명해집니다.</p></section><div className="content-wrap"><div className="article-list">{posts.map((p,i)=><Link href={`/blog/${p.slug}`} className="article-row" key={p.slug}><div className={`post-art post-${i%3}`}><span>{i%2?"⌂":"₩"}</span></div><div><small className="kicker">{p.category} · {p.read}</small><h2>{p.title}</h2><p>{p.excerpt}</p></div><span>→</span></Link>)}</div></div></>}

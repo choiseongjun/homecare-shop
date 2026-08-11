@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/HardLink";
 
 export const metadata: Metadata = {
   title: "서비스 이용 및 상담 연결 안내",
