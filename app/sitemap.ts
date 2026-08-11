@@ -1,0 +1,2 @@
+import type {MetadataRoute} from "next";import {cases,posts,regions,services,SITE} from "../lib/site";
+export default function sitemap():MetadataRoute.Sitemap{const paths=["","/price","/estimate","/cases","/blog",...services.map(s=>`/${s.slug}`),...cases.map(c=>`/cases/${c.slug}`),...posts.map(p=>`/blog/${p.slug}`),...Object.keys(regions).map(r=>`/regions/${r}`)];return paths.map((p,i)=>({url:`${SITE.url}${p}`,lastModified:new Date(),changeFrequency:i<6?"weekly":"monthly",priority:p===""?1:p==="/estimate"?0.9:0.7}))}
