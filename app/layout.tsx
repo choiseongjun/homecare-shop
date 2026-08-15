@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: { default: "에어픽 | 에어컨 설치·이전·수리 문의", template: "%s | 에어픽" },
   description: SITE.description,
   alternates: { canonical: "/" },
-  openGraph: { title: "에어픽 | 에어컨 설치·이전·수리 문의", description: SITE.description, type: "website", locale: "ko_KR", siteName: SITE.name },
-  twitter: { card: "summary", title: "에어픽", description: SITE.description },
+  openGraph: { title: "에어픽 | 에어컨 설치·이전·수리 문의", description: SITE.description, type: "website", locale: "ko_KR", siteName: SITE.name, images: [{ url: "/og.png", width: 1536, height: 1024, alt: "에어컨 문의, 어디에 물어볼지 막막할 때 - 에어픽" }] },
+  twitter: { card: "summary_large_image", title: "에어픽", description: SITE.description, images: ["/og.png"] },
 };
 
 function Header() {
