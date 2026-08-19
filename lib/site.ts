@@ -3,8 +3,8 @@ export const SITE = {
   phone: "1588-0426",
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://airpick.kr",
-  description: "에어컨 설치·이전설치·수리·청소가 필요할 때 예상 비용을 확인하고 간편하게 문의하세요.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://airpick-seoul.junis2702.chatgpt.site",
+  description: "지역과 필요한 작업으로 에어컨 기술자를 찾고 경력, 서비스 가격과 작업 정보를 확인해 직접 문의하세요.",
 };
 
 export const services = [

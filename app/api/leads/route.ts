@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true, id: lead.id }, { status: 201 });
   } catch (error) {
     console.error("Lead creation failed", error);
-    return Response.json({ error: "견적 접수 중 오류가 발생했습니다." }, { status: 500 });
+    return Response.json({ error: "신청 접수 중 오류가 발생했습니다." }, { status: 500 });
   } finally {
     await prisma.$disconnect();
   }
