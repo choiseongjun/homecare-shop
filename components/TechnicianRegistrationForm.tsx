@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "@/components/HardLink";
 
-const skillOptions = ["에어컨 설치", "에어컨 이전설치", "에어컨 청소", "에어컨 수리", "시스템에어컨", "상업용 냉난방", "냉매·배관"];
+const skillOptions = ["에어컨·냉동공조", "전기", "배관·수도", "보일러·난방", "청소", "가구·가전 설치", "생활 수리", "용접·금속", "철거", "타일·도배", "방충망", "CCTV·네트워크", "간판", "환기·시설관리", "기타 현장 기술"];
 
 export default function TechnicianRegistrationForm(){
   const [busy,setBusy]=useState(false);

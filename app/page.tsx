@@ -1,13 +1,15 @@
 import Link from "@/components/HardLink";
-import { airconTypes, cases, money, prices, SITE } from "../lib/site";
+import { cases, money, prices, SITE } from "../lib/site";
 
-const inquiryServices = [
-  { href: "/install", no: "01", icon: "+", title: "신규 설치", copy: "새 제품 설치가 필요해요" },
-  { href: "/relocation", no: "02", icon: "↔", title: "이전 설치", copy: "철거 후 다른 곳에 옮기고 싶어요" },
-  { href: "/repair", no: "03", icon: "⚙", title: "점검·수리", copy: "냉방, 누수, 소음 문제가 있어요" },
-  { href: "/cleaning", no: "04", icon: "✦", title: "분해 청소", copy: "냄새와 내부 오염이 걱정돼요" },
-  { href: "/system-aircon", no: "05", icon: "▦", title: "시스템에어컨", copy: "가정용 천장형 상담이 필요해요" },
-  { href: "/commercial-aircon", no: "06", icon: "▤", title: "상업용 냉난방", copy: "매장·사무실용으로 문의할게요" },
+const mainCategories = [
+  { service: "에어컨", no: "01", icon: "❄", title: "에어컨", copy: "설치 · 이전 · 청소 · 수리" },
+  { service: "전기", no: "02", icon: "↯", title: "전기", copy: "조명 · 콘센트 · 전기 공사" },
+  { service: "배관·수도", no: "03", icon: "≈", title: "배관·수도", copy: "누수 · 막힘 · 수도 교체" },
+  { service: "보일러·난방", no: "04", icon: "♨", title: "보일러·난방", copy: "점검 · 수리 · 교체" },
+  { service: "청소", no: "05", icon: "✦", title: "청소", copy: "가전 · 입주 · 전문 청소" },
+  { service: "설치·수리", no: "06", icon: "+", title: "설치·수리", copy: "가구 · 가전 · 생활 수리" },
+  { service: "용접·금속", no: "07", icon: "◇", title: "용접·금속", copy: "동관 · 철재 · 현장 용접" },
+  { service: "시설·통신", no: "08", icon: "⌁", title: "시설·통신", copy: "CCTV · 네트워크 · 시설관리" },
 ];
 
 const faq = [
@@ -24,48 +26,39 @@ export default function Home() {
 
     <section className="home-hero">
       <div className="home-hero-copy">
-        <div className="home-badge"><i/> 에어컨 기술자 찾기 · 문의 접수</div>
-        <h1>내 주변<br/><em>에어컨 기술자</em>를<br/>찾아보세요</h1>
-        <p>지역과 필요한 작업을 검색하고,<br/>등록된 기술자의 경력·가격·작업사진을 확인하세요.</p>
+        <div className="home-badge"><i/> 생활·현장 기술자 찾기 플랫폼</div>
+        <h1>우리 동네<br/><em>현장 기술자</em>를<br/>찾아보세요</h1>
+        <p>에어컨·전기·배관·보일러부터 용접·시설 작업까지,<br/>지역 기술자의 경력과 서비스를 확인하세요.</p>
         <form className="tech-search" action="/technicians">
           <label><span>지역</span><input name="area" aria-label="지역" placeholder="예: 서울 동작구"/></label>
-          <label><span>필요한 작업</span><select name="service" aria-label="필요한 작업" defaultValue=""><option value="">작업 선택</option><option value="설치">신규 설치</option><option value="이전설치">이전 설치</option><option value="수리">점검·수리</option><option value="청소">분해 청소</option><option value="시스템에어컨">시스템에어컨</option></select></label>
+          <label><span>필요한 기술</span><select name="service" aria-label="필요한 기술" defaultValue=""><option value="">기술 선택</option><option value="에어컨">에어컨</option><option value="전기">전기</option><option value="배관·수도">배관·수도</option><option value="보일러·난방">보일러·난방</option><option value="청소">청소</option><option value="설치·수리">설치·수리</option><option value="용접">용접</option><option value="냉동·환기">냉동·환기</option><option value="CCTV·네트워크">CCTV·네트워크</option><option value="기타">기타 현장 기술</option></select></label>
           <button type="submit">기술자 찾기 →</button>
         </form>
         <div className="market-hero-links"><Link href="/estimate">찾는 기술자가 없으면 문의 남기기</Link><Link href="/register/technician">기술자로 등록하기</Link></div>
         <ul className="home-proof"><li><b>직접</b><span>프로필 비교</span></li><li><b>무료</b><span>문의 접수</span></li><li><b>확인 후</b><span>예약 결정</span></li></ul>
       </div>
-      <div className="home-hero-media">
-        <div className="home-hero-photo" role="img" aria-label="거실 벽걸이 에어컨 설치 예시"></div>
-        <div className="home-float-card home-float-top"><span>등록 가능 분야</span><b>설치 · 청소 · 수리</b><small>경력과 작업사진으로 소개</small></div>
-        <div className="home-float-card home-float-bottom"><i>A</i><div><b>기술자를 찾는 새로운 방법</b><small>검색하고 확인한 뒤 직접 선택</small></div><strong>→</strong></div>
-      </div>
+      <div className="home-hero-media market-visual"><div className="market-visual-panel"><div className="market-visual-head"><span>NEARBY TECHNICIANS</span><b>필요한 기술을 선택하세요</b></div><div className="market-visual-categories">{mainCategories.slice(0,6).map(item=><span key={item.title}><i>{item.icon}</i>{item.title}</span>)}</div><div className="market-profile-preview"><div className="profile-avatar">A</div><div><b>확인된 기술자 프로필</b><span>경력 · 활동지역 · 서비스 가격</span></div><strong>보기 →</strong></div></div><div className="market-count-card"><b>모든 현장 기술</b><span>직종 제한 없이 등록 신청</span></div></div>
     </section>
 
-    <nav className="home-quick" aria-label="빠른 안내"><span>바로가기</span><Link href="/technicians">기술자 찾기</Link><Link href="/register/technician">기술자 등록</Link><Link href="/price">예상 가격</Link><Link href="/cases">비용 사례</Link><Link href="/estimate">작업 문의</Link></nav>
+    <nav className="home-quick" aria-label="빠른 안내"><span>주요 기술</span><Link href="/technicians?service=에어컨">에어컨</Link><Link href="/technicians?service=전기">전기</Link><Link href="/technicians?service=배관·수도">배관·수도</Link><Link href="/technicians?service=보일러·난방">보일러</Link><Link href="/technicians">전체 기술</Link><Link href="/register/technician">기술자 등록</Link></nav>
 
-    <section className="market-split"><div><span>고객이신가요?</span><h2>지역 기술자를<br/>직접 찾아보세요</h2><p>기술과 경력, 활동지역과 서비스 가격을 확인하고 원하는 기술자에게 문의할 수 있습니다.</p><Link href="/technicians">기술자 찾기 →</Link></div><div><span>현장 기술자이신가요?</span><h2>내 경력을 보여줄<br/>프로필을 준비하세요</h2><p>에어컨 설치·청소·수리 경력과 활동지역을 등록하고 고객 문의를 받을 수 있습니다.</p><Link href="/register/technician">무료 등록 신청 →</Link></div></section>
+    <section className="market-split"><div><span>고객이신가요?</span><h2>지역 기술자를<br/>직접 찾아보세요</h2><p>기술과 경력, 활동지역과 서비스 가격을 확인하고 원하는 기술자에게 문의할 수 있습니다.</p><Link href="/technicians">기술자 찾기 →</Link></div><div><span>현장 기술자이신가요?</span><h2>어떤 기술이든<br/>프로필로 등록하세요</h2><p>생활·설비·산업 현장의 경력과 활동지역을 등록하고 고객에게 내 기술을 알릴 수 있습니다.</p><Link href="/register/technician">무료 등록 신청 →</Link></div></section>
 
     <section className="home-block home-services">
-      <div className="home-heading"><div><span>01 · SERVICE</span><h2>어떤 작업이 필요하세요?</h2></div><p>가장 가까운 항목을 선택하면<br/>해당 서비스의 비용과 확인사항을 볼 수 있어요.</p></div>
-      <div className="home-service-grid">{inquiryServices.map(service=><Link href={service.href} className="home-service" key={service.title}><small>{service.no}</small><i>{service.icon}</i><div><h3>{service.title}</h3><p>{service.copy}</p></div><b>→</b></Link>)}</div>
-      <div className="home-other"><span>철거, 냉매 충전 또는 정확한 작업명을 모르시나요?</span><Link href="/estimate">기타 문의 남기기 →</Link></div>
+      <div className="home-heading"><div><span>01 · CATEGORY</span><h2>어떤 기술이 필요하세요?</h2></div><p>등록된 기술 분야부터 검색 결과에 표시합니다.<br/>찾는 직종이 없다면 기타 작업으로 문의하세요.</p></div>
+      <div className="home-service-grid category-grid">{mainCategories.map(item=><Link href={`/technicians?service=${encodeURIComponent(item.service)}`} className="home-service" key={item.title}><small>{item.no}</small><i>{item.icon}</i><div><h3>{item.title}</h3><p>{item.copy}</p></div><b>→</b></Link>)}</div>
+      <div className="home-other"><span>방충망·타일·도배·철거·간판 등 다른 현장 기술이 필요하신가요?</span><Link href="/technicians?service=기타">전체 기술 검색 →</Link></div>
     </section>
 
-    <section className="home-type-section">
-      <div className="home-block">
-        <div className="home-heading light"><div><span>02 · AIRCON TYPE</span><h2>제품 종류별로 확인하세요</h2></div><p>벽걸이부터 시스템·상업용까지<br/>사진을 보고 내 제품과 가까운 유형을 선택하세요.</p></div>
-        <div className="home-type-grid">{airconTypes.map((type,index)=><Link href={`/estimate?aircon=${type.slug}`} className="home-type-card" key={type.slug}><div className={`home-type-photo photo-${type.photo}`} role="img" aria-label={`${type.name} 예시 사진`}><span>0{index+1}</span></div><div><h3>{type.name}</h3><p>{type.copy}</p><small>참고 시작가 <b>{type.price}</b></small></div></Link>)}</div>
-      </div>
-    </section>
+    <section className="home-type-section skill-open"><div className="home-block"><div><span>02 · OPEN REGISTRATION</span><h2>목록에 없는 기술도<br/>등록할 수 있습니다</h2><p>처음부터 직종을 제한하지 않습니다. 실제 현장에서 제공하는 기술과 경력을 알려주시면 확인 후 적절한 분야로 분류합니다.</p><Link href="/register/technician">내 기술 무료 등록 →</Link></div><div className="skill-cloud">{["냉동공조","용접","방충망","타일","도배","철거","CCTV","네트워크","간판","환기","시설관리","가구조립","가전설치","기타 현장 기술"].map((skill,index)=><span className={`skill-${index%4}`} key={skill}>{skill}</span>)}</div></div></section>
 
     <section className="home-block home-price-area">
-      <div className="home-price-copy"><span>03 · PRICE GUIDE</span><h2>문의 전,<br/>대략적인 비용부터</h2><p>표시된 금액은 일반적인 조건을 기준으로 한 참고 가격입니다. 배관 길이, 실외기 위치와 제품 상태에 따라 실제 비용은 달라질 수 있어요.</p><Link href="/price">전체 예상 가격 확인 →</Link></div>
+      <div className="home-price-copy"><span>03 · FIRST CATEGORY</span><h2>에어컨 분야부터<br/>정보를 쌓고 있어요</h2><p>현재는 에어컨 설치·이전·수리의 참고 가격과 비용 사례를 먼저 제공합니다. 다른 분야는 실제 기술자와 서비스가 등록되는 순서대로 공개합니다.</p><Link href="/price">에어컨 예상 가격 확인 →</Link></div>
       <div className="home-price-card"><div className="home-price-head"><b>자주 찾는 예상 가격</b><span>참고용</span></div>{prices.slice(0,5).map((price,index)=><div className="home-price-row" key={`${price.name}-${index}`}><i className={`p${index}`}/><div><b>{price.category} {price.name}</b><small>{price.note}</small></div><strong>{money(price.price)}<small> / {price.unit}</small></strong></div>)}<p>※ 정확한 금액은 상담 및 현장 조건 확인 후 결정됩니다.</p></div>
     </section>
 
     <section className="home-case-section"><div className="home-block">
-      <div className="home-heading"><div><span>04 · COST EXAMPLES</span><h2>비슷한 조건의 비용 예시</h2></div><Link href="/cases" className="home-section-link">전체 사례 보기 →</Link></div>
+      <div className="home-heading"><div><span>04 · AIRCON COST EXAMPLES</span><h2>먼저 공개한 에어컨 비용 예시</h2></div><Link href="/cases" className="home-section-link">전체 사례 보기 →</Link></div>
       <div className="home-case-grid">{cases.slice(0,3).map(item=><Link href={`/cases/${item.slug}`} className="home-case" key={item.slug}><div className="home-case-photo" style={{backgroundImage:`url('${item.image}')`}}><span>{item.type}</span><small>현장 예시 이미지</small></div><div><small>예상 조건 · {item.region}</small><h3>{item.title}</h3><p>{item.summary}</p><footer><span>예상 작업비</span><b>{money(item.total)}</b></footer></div></Link>)}</div>
     </div></section>
 
@@ -73,6 +66,6 @@ export default function Home() {
 
     <section className="home-block home-faq"><div className="home-heading"><div><span>06 · FAQ</span><h2>문의 전에 많이 물어보는 내용</h2></div></div><div className="home-faq-list">{faq.map(([question,answer])=><details key={question}><summary>{question}<span>＋</span></summary><p>{answer}</p></details>)}</div></section>
 
-    <section className="home-bottom-cta"><div><span>에어컨 기술자와 고객이 만나는 곳</span><h2>기술자를 찾거나,<br/>내 기술을 등록해보세요.</h2><p>검색할 프로필이 아직 없는 지역은 기존 작업 문의로 연결을 도와드립니다.</p><div className="bottom-cta-actions"><Link href="/technicians">기술자 찾기 <b>→</b></Link><Link href="/register/technician">기술자 등록</Link></div></div><div className="home-bottom-mark">A</div></section>
+    <section className="home-bottom-cta"><div><span>생활·현장 기술자와 고객이 만나는 곳</span><h2>기술자를 찾거나,<br/>내 기술을 등록해보세요.</h2><p>직종과 관계없이 등록 신청할 수 있으며, 확인된 프로필부터 검색 결과에 공개합니다.</p><div className="bottom-cta-actions"><Link href="/technicians">기술자 찾기 <b>→</b></Link><Link href="/register/technician">기술자 등록</Link></div></div><div className="home-bottom-mark">A</div></section>
   </div>;
 }
