@@ -42,7 +42,7 @@ test("server-renders the finished Airpick home page", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /<title>에어픽 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
+  assert.match(html, /<title>홈프라이스 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
   assert.match(html, /우리 아파트 표준 단가 보기/);
   assert.match(html, /현장 추가금 없는 견적 문의하기/);
   assert.doesNotMatch(html, /기술자 찾기|OPEN REGISTRATION|프로필 비교/);
@@ -59,7 +59,7 @@ test("renders apartment price pages with unique SEO metadata and structured data
   const response = await render("/apt/gwanak-dreamtown/33/aircon");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /<title>관악드림타운 33평 에어컨 비용·예상 견적 \| 에어픽<\/title>/);
+  assert.match(html, /<title>관악드림타운 33평 에어컨 비용·예상 견적 \| 홈프라이스<\/title>/);
   assert.match(html, /rel="canonical" href="https:\/\//);
   assert.match(html, /FAQPage/);
   assert.match(html, /AggregateOffer/);

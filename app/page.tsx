@@ -34,6 +34,6 @@ export default function Home(){
 
     <section className="home-block home-faq"><div className="home-heading"><div><span>05 · FAQ</span><h2>견적 접수 전에 확인하세요</h2></div></div><div className="home-faq-list">{faq.map(([question,answer])=><details key={question}><summary>{question}<span>＋</span></summary><p>{answer}</p></details>)}</div></section>
 
-    <section className="home-bottom-cta"><div><span>표준 단가를 확인한 다음</span><h2>현장 조건에 맞는<br/>견적을 요청하세요.</h2><p>주소와 작업 내용을 남기면 예상 금액과 연결 가능 여부를 안내합니다.</p><div className="bottom-cta-actions"><Link href="/apt">단지별 단가 <b>→</b></Link><Link href="/estimate">무료 견적 신청</Link></div></div><div className="home-bottom-mark">A</div></section>
+    <section className="home-bottom-cta"><div><span>표준 단가를 확인한 다음</span><h2>현장 조건에 맞는<br/>견적을 요청하세요.</h2><p>주소와 작업 내용을 남기면 예상 금액과 연결 가능 여부를 안내합니다.</p><div className="bottom-cta-actions"><Link href="/apt">단지별 단가 <b>→</b></Link><Link href="/estimate">무료 견적 신청</Link></div></div><div className="home-bottom-mark">H</div></section>
   </div>;
 }

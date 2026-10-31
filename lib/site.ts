@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "에어픽",
+  name: "홈프라이스",
   phone: "1588-0426",
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
