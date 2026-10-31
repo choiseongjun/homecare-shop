@@ -1,3 +1,5 @@
+import {kaptApartments} from "./kapt-apartments";
+
 export const aptServices = {
   aircon: { name: "에어컨", short: "설치·이전·청소", icon: "❄" },
   curtain: { name: "커튼·블라인드", short: "실측·타공·설치", icon: "▥" },
@@ -7,15 +9,21 @@ export const aptServices = {
 export type AptServiceSlug = keyof typeof aptServices;
 export type Apartment = {
   code: string;
+  kaptCode?: string;
   name: string;
+  region?: "서울특별시" | "경기도" | "인천광역시";
   district: string;
   neighborhood: string;
+  address?: string;
+  roadAddress?: string;
   completed: number;
+  households?: number;
   sizes: number[];
   note: string;
+  source?: string;
 };
 
-export const apartments: Apartment[] = [
+const pilotApartments: Apartment[] = [
   { code:"dongjak-sangdo-park-xi", name:"상도파크자이", district:"서울 동작구", neighborhood:"상도동", completed:2016, sizes:[25,34], note:"거실 확장형과 방별 벽걸이 설치 문의가 많은 평형 구성" },
   { code:"dongjak-raemian-sangdo-3", name:"래미안상도3차", district:"서울 동작구", neighborhood:"상도동", completed:2004, sizes:[24,32], note:"준공 20년 전후 배관·수전·환풍기 상태를 함께 확인할 시기" },
   { code:"gwanak-dreamtown", name:"관악드림타운", district:"서울 관악구", neighborhood:"봉천동", completed:2003, sizes:[24,33], note:"이사 전 에어컨 배관 동선과 커튼 타공 위치 확인이 필요한 대단지" },
@@ -27,6 +35,17 @@ export const apartments: Apartment[] = [
   { code:"gwacheon-prugio-summit", name:"과천푸르지오써밋", district:"경기 과천시", neighborhood:"중앙동", completed:2020, sizes:[25,34], note:"신축급 매립 설비와 천장·벽체 마감 보존을 우선 확인할 단지" },
   { code:"anyang-pyeongchon-the-sharp-central-city", name:"평촌더샵센트럴시티", district:"경기 안양시", neighborhood:"관양동", completed:2016, sizes:[24,33], note:"이사철 커튼 재설치와 에어컨 이전설치 수요를 함께 비교할 단지" },
 ];
+
+export const apartments: Apartment[] = [...pilotApartments, ...kaptApartments];
+
+export const apartmentRegions = [
+  {slug:"seoul",name:"서울특별시"},
+  {slug:"gyeonggi",name:"경기도"},
+  {slug:"incheon",name:"인천광역시"},
+] as const;
+
+export function findApartmentRegion(slug:string){return apartmentRegions.find(item=>item.slug===slug);}
+export function apartmentsInRegion(region:string){return kaptApartments.filter(item=>item.region===region);}
 
 export function findApartment(code:string){return apartments.find(item=>item.code===code);}
 export function isService(value:string):value is AptServiceSlug{return value in aptServices;}
