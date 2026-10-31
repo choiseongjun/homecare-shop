@@ -5,6 +5,7 @@ import { findTechnician, technicians } from "@/lib/technicians";
 import { SITE } from "@/lib/site";
 
 export function generateStaticParams(){return technicians.map(item=>({slug:item.slug}));}
+export const dynamicParams=false;
 
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
   const {slug}=await params; const item=findTechnician(slug); if(!item)return {};
