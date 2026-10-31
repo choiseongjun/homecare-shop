@@ -4,7 +4,7 @@ export const SITE = {
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://homeprice.kr",
-  description: "전국 아파트 단지·평형별 에어컨, 커튼·블라인드, 집수리 예상 단가를 확인하고 지역 현장 기술자에게 직접 문의하세요.",
+  description: "전국 아파트 단지별 에어컨, 커튼·블라인드, 집수리 표준 단가를 확인하고 현장 조건에 맞는 무료 견적을 접수하세요.",
 };
 
 export const services = [

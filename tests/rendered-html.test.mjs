@@ -43,8 +43,16 @@ test("server-renders the finished Airpick home page", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
   assert.match(html, /<title>에어픽 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
-  assert.match(html, /단지별 표준 단가 보기/);
+  assert.match(html, /우리 아파트 표준 단가 보기/);
+  assert.match(html, /현장 추가금 없는 견적 문의하기/);
+  assert.doesNotMatch(html, /기술자 찾기|OPEN REGISTRATION|프로필 비교/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
+});
+
+test("redirects the technician directory to the estimate intake", async () => {
+  const response = await fetch(`${baseUrl}/technicians`, { redirect: "manual" });
+  assert.equal(response.status, 307);
+  assert.equal(response.headers.get("location"), "/estimate");
 });
 
 test("renders apartment price pages with unique SEO metadata and structured data", async () => {
