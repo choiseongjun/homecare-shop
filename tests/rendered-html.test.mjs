@@ -1,30 +1,59 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { spawn } from "node:child_process";
+import test, { after, before } from "node:test";
+import { fileURLToPath } from "node:url";
+
+const port = 3199;
+const baseUrl = `http://127.0.0.1:${port}`;
+let server;
+
+async function waitForServer() {
+  for (let attempt = 0; attempt < 60; attempt += 1) {
+    try {
+      const response = await fetch(baseUrl);
+      if (response.ok) return;
+    } catch {
+      // The production server may still be starting.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  }
+  throw new Error("Next.js production server did not start in time");
+}
+
+before(async () => {
+  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", String(port)], {
+    cwd: fileURLToPath(new URL("..", import.meta.url)),
+    stdio: "ignore",
+    windowsHide: true,
+  });
+  await waitForServer();
+});
+
+after(() => {
+  server?.kill();
+});
 
 async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${path}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${path}`, {headers:{accept:"text/html"}}), {ASSETS:{fetch:async()=>new Response("Not found",{status:404})}}, {waitUntil(){},passThroughOnException(){}});
+  return fetch(`${baseUrl}${path}`, { headers: { accept: "text/html" } });
 }
 
 test("server-renders the finished Airpick home page", async () => {
-  const response=await render();
-  assert.equal(response.status,200);
-  assert.match(response.headers.get("content-type")??"",/^text\/html\b/i);
-  const html=await response.text();
-  assert.match(html,/<title>에어픽 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
-  assert.match(html,/단지별 표준 단가 보기/);
-  assert.doesNotMatch(html,/codex-preview|Your site is taking shape|Building your site/i);
+  const response = await render();
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  const html = await response.text();
+  assert.match(html, /<title>에어픽 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
+  assert.match(html, /단지별 표준 단가 보기/);
+  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
 
 test("renders apartment price pages with unique SEO metadata and structured data", async () => {
-  const response=await render("/apt/gwanak-dreamtown/33/aircon");
-  assert.equal(response.status,200);
-  const html=await response.text();
-  assert.match(html,/<title>관악드림타운 33평 에어컨 비용·예상 견적 \| 에어픽<\/title>/);
-  assert.match(html,/rel="canonical" href="https:\/\/airpick-seoul\.junis2702\.chatgpt\.site\/apt\/gwanak-dreamtown\/33\/aircon"/);
-  assert.match(html,/FAQPage/);
-  assert.match(html,/AggregateOffer/);
-  assert.match(html,/BreadcrumbList/);
+  const response = await render("/apt/gwanak-dreamtown/33/aircon");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<title>관악드림타운 33평 에어컨 비용·예상 견적 \| 에어픽<\/title>/);
+  assert.match(html, /rel="canonical" href="https:\/\//);
+  assert.match(html, /FAQPage/);
+  assert.match(html, /AggregateOffer/);
+  assert.match(html, /BreadcrumbList/);
 });

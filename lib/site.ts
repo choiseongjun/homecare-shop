@@ -3,7 +3,7 @@ export const SITE = {
   phone: "1588-0426",
   phoneHref: "tel:15880426",
   kakao: "https://pf.kakao.com/",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://airpick-seoul.junis2702.chatgpt.site",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://homeprice.kr",
   description: "전국 아파트 단지·평형별 에어컨, 커튼·블라인드, 집수리 예상 단가를 확인하고 지역 현장 기술자에게 직접 문의하세요.",
 };
 
