@@ -55,6 +55,17 @@ test("redirects the technician directory to the estimate intake", async () => {
   assert.equal(response.headers.get("location"), "/estimate");
 });
 
+test("renders price guides for all homecare categories", async () => {
+  const response = await render("/price");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /id="aircon"/);
+  assert.match(html, /id="curtain"/);
+  assert.match(html, /id="repair"/);
+  assert.match(html, /커튼 레일 설치/);
+  assert.match(html, /방충망 교체/);
+});
+
 test("renders apartment price pages with unique SEO metadata and structured data", async () => {
   const response = await render("/apt/gwanak-dreamtown/33/aircon");
   assert.equal(response.status, 200);

@@ -1,5 +1,5 @@
 import Link from "@/components/HardLink";
-import {cases,money,prices,SITE} from "../lib/site";
+import {cases,homecarePriceGroups,money,SITE} from "../lib/site";
 
 const mainCategories=[
   {service:"에어컨",no:"01",icon:"❄",title:"에어컨",copy:"설치 · 이전 · 청소 · 수리",href:"/apt#aircon"},
@@ -26,7 +26,7 @@ export default function Home(){
 
     <section className="home-block home-services"><div className="home-heading"><div><span>01 · CATEGORY</span><h2>필요한 작업을 선택하세요</h2></div><p>표준 단가를 확인하거나 작업 조건을 바로 접수할 수 있습니다.<br/>주소와 현장 사진이 있으면 더 정확하게 안내합니다.</p></div><div className="home-service-grid category-grid">{mainCategories.map(item=><Link href={item.href} className="home-service" key={item.title}><small>{item.no}</small><i>{item.icon}</i><div><h3>{item.title}</h3><p>{item.copy}</p></div><b>→</b></Link>)}</div><div className="home-other"><span>보일러·용접·시설·가구 설치 등 다른 작업이 필요하신가요?</span><Link href="/estimate?service=기타">작업 조건 접수하기 →</Link></div></section>
 
-    <section className="home-block home-price-area"><div className="home-price-copy"><span>02 · STANDARD PRICE GUIDE</span><h2>항목별 표준<br/>시공 단가 가이드</h2><p>자주 요청되는 에어컨 설치·이전·청소·수리 작업의 기본 가격과 추가 비용 발생 조건을 정리했습니다. 현장 접수 전 예상 범위를 먼저 비교하세요.</p><Link href="/price">항목별 예상 가격 확인 →</Link></div><div className="home-price-card"><div className="home-price-head"><b>자주 찾는 예상 가격</b><span>참고용</span></div>{prices.slice(0,5).map((price,index)=><div className="home-price-row" key={`${price.name}-${index}`}><i className={`p${index}`}/><div><b>{price.category} {price.name}</b><small>{price.note}</small></div><strong>{money(price.price)}<small> / {price.unit}</small></strong></div>)}<p>※ 정확한 금액은 제품과 현장 조건을 확인한 뒤 안내합니다.</p></div></section>
+    <section className="home-block home-price-area"><div className="home-price-copy"><span>02 · STANDARD PRICE GUIDE</span><h2>항목별 표준<br/>시공 단가 가이드</h2><p>에어컨, 커튼·블라인드, 수전·환풍기·방충망 등 생활 집수리의 기본 가격과 추가 비용 조건을 정리했습니다. 현장 접수 전 예상 범위를 먼저 비교하세요.</p><Link href="/price">전체 항목 예상 가격 확인 →</Link></div><div className="home-price-card"><div className="home-price-head"><b>카테고리별 대표 가격</b><span>참고용</span></div>{homecarePriceGroups.flatMap(group=>group.rows.slice(0,2).map(row=>({group,row}))).map(({group,row},index)=><div className="home-price-row" key={`${group.slug}-${row.name}`}><i className={`p${index}`}/><div><b>{group.name} · {row.name}</b><small>{row.note}</small></div><strong>{money(row.low)}~<small> / {row.unit}</small></strong></div>)}<p>※ 정확한 금액은 제품과 현장 조건을 확인한 뒤 안내합니다.</p></div></section>
 
     <section className="home-case-section"><div className="home-block"><div className="home-heading"><div><span>03 · COST EXAMPLES</span><h2>현장 조건별 비용 예시</h2></div><Link href="/cases" className="home-section-link">전체 사례 보기 →</Link></div><div className="home-case-grid">{cases.slice(0,3).map(item=><Link href={`/cases/${item.slug}`} className="home-case" key={item.slug}><div className="home-case-photo" style={{backgroundImage:`url('${item.image}')`}}><span>{item.type}</span><small>현장 예시 이미지</small></div><div><small>예상 조건 · {item.region}</small><h3>{item.title}</h3><p>{item.summary}</p><footer><span>예상 작업비</span><b>{money(item.total)}</b></footer></div></Link>)}</div></div></section>
 

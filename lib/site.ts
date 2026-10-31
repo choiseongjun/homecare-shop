@@ -40,6 +40,39 @@ export const prices = [
   { category: "수리", name: "출장 점검", price: 50000, unit: "회", note: "부품·냉매 비용 별도" },
 ];
 
+export const homecarePriceGroups = [
+  {
+    slug: "aircon", icon: "❄", name: "에어컨", description: "설치·이전·청소·수리",
+    rows: [
+      {name:"벽걸이 기본 설치",low:120000,high:180000,unit:"대",note:"기본 배관 범위와 타공 조건 확인"},
+      {name:"스탠드 기본 설치",low:180000,high:280000,unit:"대",note:"배관 길이와 실외기 위치에 따라 변동"},
+      {name:"2in1 이전설치",low:280000,high:450000,unit:"세트",note:"철거·운반·추가 배관 별도 확인"},
+      {name:"분해 청소",low:70000,high:150000,unit:"대",note:"제품 방식과 오염도에 따라 변동"},
+      {name:"출장 점검·수리",low:50000,high:180000,unit:"회",note:"부품과 냉매 비용 별도"},
+    ],
+  },
+  {
+    slug: "curtain", icon: "▥", name: "커튼·블라인드", description: "실측·타공·레일 설치",
+    rows: [
+      {name:"커튼 레일 설치",low:70000,high:140000,unit:"곳",note:"거실 1곳 공임 기준"},
+      {name:"블라인드 설치",low:30000,high:60000,unit:"개",note:"제품비와 현장 실측 별도"},
+      {name:"기존 레일 철거",low:20000,high:50000,unit:"곳",note:"폐기와 천장 보수 범위 확인"},
+      {name:"콘크리트 특수 타공",low:10000,high:30000,unit:"개소",note:"천장·벽체 재질에 따라 변동"},
+      {name:"전동 커튼 설치",low:150000,high:350000,unit:"곳",note:"모터·전원 공사·제품비 별도"},
+    ],
+  },
+  {
+    slug: "repair", icon: "⌂", name: "집수리", description: "수전·환풍기·방충망",
+    rows: [
+      {name:"수전 교체",low:50000,high:100000,unit:"개",note:"수전 제품비와 배관 보수 별도"},
+      {name:"욕실 환풍기 교체",low:70000,high:150000,unit:"대",note:"덕트·전기 상태에 따라 변동"},
+      {name:"방문 손잡이 교체",low:30000,high:60000,unit:"개",note:"부속 제품비 포함 여부 확인"},
+      {name:"방충망 교체",low:50000,high:120000,unit:"창",note:"창 크기와 망 종류에 따라 변동"},
+      {name:"욕실·주방 실리콘 보수",low:50000,high:120000,unit:"곳",note:"기존 실리콘 제거와 곰팡이 상태 확인"},
+    ],
+  },
+] as const;
+
 export const cases = [
   { slug: "dongjak-wall-relocation", region: "서울 동작구 상도동", title: "벽걸이 에어컨 이전설치", type: "벽걸이", total: 234000, summary: "실외기 앵글 교체와 배관 3m 추가 작업", tone: "wall", image: "/cases/wall-install.png", items: [["기본 설치",150000],["추가 배관 3m",54000],["타공",30000]] as [string, number][] },
   { slug: "gwanak-stand-install", region: "서울 관악구 봉천동", title: "스탠드 에어컨 신규설치", type: "스탠드", total: 246000, summary: "기본 배관 8m 포함, 진공 작업 진행", tone: "stand", image: "/cases/stand-install.png", items: [["기본 설치",180000],["추가 배관 3m",66000]] as [string, number][] },
