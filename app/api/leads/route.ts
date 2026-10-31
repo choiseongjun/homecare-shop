@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         region: String(data.get("region")).trim(),
         addressDetail: String(data.get("addressDetail") || "").trim() || null,
         desiredDate: desiredDateValue ? new Date(`${desiredDateValue}T00:00:00+09:00`) : null,
-        message: [String(data.get("technician") || "").trim(), String(data.get("message") || "").trim()].filter(Boolean).join("\n") || null,
+        message: [String(data.get("technician") || "").trim(), String(data.get("aptContext") || "").trim(), String(data.get("message") || "").trim()].filter(Boolean).join("\n") || null,
         images: {
           create: images.map((file) => ({ url: `pending-upload://${encodeURIComponent(file.name)}` })),
         },

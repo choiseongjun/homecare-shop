@@ -15,7 +15,7 @@ declare global {
 const serviceOptions=["에어컨","전기","배관·수도","보일러·난방","청소","설치·수리","용접·금속","시설·통신","기타"];
 const airconOptions=["신규 설치","교체·이전","점검·수리","청소·관리","시공·공사","철거","잘 모르겠어요"];
 
-export default function EstimateForm({technician}:{technician?:{slug:string;business:string;name:string;category:string}}){
+export default function EstimateForm({technician,context}:{technician?:{slug:string;business:string;name:string;category:string};context?:string}){
   const [step,setStep]=useState(1); const [sent,setSent]=useState(false); const [busy,setBusy]=useState(false); const [files,setFiles]=useState<File[]>([]); const [serviceType,setServiceType]=useState(""); const [airconType,setAirconType]=useState(""); const [address,setAddress]=useState(""); const [addressLoading,setAddressLoading]=useState(false);
   function openAddressSearch(){
     const openPostcode=()=>new window.daum!.Postcode({oncomplete:data=>setAddress(data.roadAddress||data.jibunAddress)}).open();
@@ -35,6 +35,7 @@ export default function EstimateForm({technician}:{technician?:{slug:string;busi
   if(sent)return <div className="success-box"><span>✓</span><h2>작업 문의가 접수되었습니다</h2><p>남겨주신 내용을 확인한 뒤<br/>상담 가능 여부를 안내드리겠습니다.</p><Link href="/">홈으로 돌아가기</Link></div>;
   return <form onSubmit={e=>{e.preventDefault();submit(e.currentTarget)}}>
     {technician&&<><input type="hidden" name="technician" value={`${technician.business} ${technician.name} 기사 (${technician.slug})`}/><div className="selected-technician"><span>선택한 데모 기사</span><b>{technician.business} · {technician.name} 기사</b><small>{technician.category} 프로필에서 문의를 시작했습니다.</small></div></>}
+    {context&&<><input type="hidden" name="aptContext" value={context}/><div className="selected-technician"><span>선택한 단지별 단가</span><b>{context}</b><small>이 조건을 기준으로 실제 견적 문의를 시작합니다.</small></div></>}
     {step>1&&<><input type="hidden" name="serviceType" value={serviceType}/><input type="hidden" name="airconType" value={airconType}/></>}
     <div className="progress"><span style={{width:`${step*33.33}%`}}/></div><div className="step-label">STEP {step} <b>/ 3</b></div>
     {step===1&&<div className="form-step"><h2>어떤 기술이 필요하세요?</h2><p>가장 가까운 분야를 선택해주세요.</p><div className="choice-grid">{serviceOptions.map((v,i)=><label key={v}><input required checked={serviceType===v} onChange={()=>setServiceType(v)} type="radio" name="serviceType" value={v}/><span><i>{["❄","↯","≈","♨","✦","＋","◇","⌁","…"][i]}</i>{v}</span></label>)}</div><h3>필요한 작업</h3><div className="pill-grid">{airconOptions.map(v=><label key={v}><input required checked={airconType===v} onChange={()=>setAirconType(v)} type="radio" name="airconType" value={v}/><span>{v}</span></label>)}</div></div>}
