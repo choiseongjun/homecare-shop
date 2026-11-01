@@ -45,6 +45,10 @@ test("server-renders the finished Airpick home page", async () => {
   assert.match(html, /<title>홈프라이스 \| 아파트 단지별 홈케어·시공 표준 단가<\/title>/);
   assert.match(html, /우리 아파트 표준 단가 보기/);
   assert.match(html, /현장 추가금 없는 견적 문의하기/);
+  assert.match(html, /커튼 레일·암막 커튼 설치/);
+  assert.match(html, /주방 수전 교체와 배관 점검/);
+  assert.match(html, /curtain-rail-install-v1\.webp/);
+  assert.match(html, /kitchen-faucet-repair-v1\.webp/);
   assert.doesNotMatch(html, /기술자 찾기|OPEN REGISTRATION|프로필 비교/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|Building your site/i);
 });
